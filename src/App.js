@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import ExpenseList from './components/ExpenseList';
+import ExpenseFilter from './components/ExpenseFilter';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [filteredExpenses, setFilteredExpenses] = useState([]);
+
+    return (
+        <div>
+            <h1>Gestão de Gastos</h1>
+            <ExpenseFilter onFilter={setFilteredExpenses} />
+            <ExpenseList expenses={filteredExpenses} />
+        </div>
+    );
 }
 
 export default App;
